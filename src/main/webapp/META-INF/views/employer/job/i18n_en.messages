@@ -29,6 +29,9 @@ employer.job.form.button.create = Create
 employer.job.form.button.update = Update
 employer.job.form.button.delete = Delete
 
+employer.job.form.label.problems.create = Create problem
+employer.job.form.label.problem.show = Problem
+
 employer.job.form.button.return = Return
 
 

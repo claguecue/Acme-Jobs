@@ -4,6 +4,13 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form readonly="true">
+		
+	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfJobsHaveAProblem" path="ratioOfJobsHaveAProblem" />
+	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfApplicationsIncludeAAnswer" path="ratioOfApplicationsIncludeAAnswer" />
+	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfApplicationsIncludeACodeWithPassword" path="ratioOfApplicationsIncludeACodeWithPassword" />
+	
+	<acme:menu-separator/>
+
 	<acme:form-textbox code="administrator.dashboard.form.label.numberOfAnnouncements" path="numberOfAnnouncements" />
 	<acme:form-textbox code="administrator.dashboard.form.label.numberOfCompanyRecords" path="numberOfCompanyRecords" />
 	<acme:form-textbox code="administrator.dashboard.form.label.numberOfInvestorRecords" path="numberOfInvestorRecords" />

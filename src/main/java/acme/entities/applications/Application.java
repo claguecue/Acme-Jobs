@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -55,6 +56,14 @@ public class Application extends DomainEntity {
 	private String				qualifications;
 
 	private String				rejectJustification;
+
+	private String				answer;
+
+	private String				code;
+
+	@Pattern(regexp = "^(?=.*[A-Za-z]){3,}(?=.*[0-9]){2,}(?=.*[\\W]){1,}[A-Za-z0-9\\W]{6,}$|^$")
+	//@Length(min = 6)
+	private String				password;
 
 	// Relationships
 	@NotNull

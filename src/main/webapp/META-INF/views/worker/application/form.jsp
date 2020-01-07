@@ -13,9 +13,27 @@
 	<acme:form-textbox code="worker.application.form.label.statement" path="statement" />
 	<acme:form-textbox code="worker.application.form.label.skills" path="skills" />
 	<acme:form-textarea code="worker.application.form.label.qualifications" path="qualifications" />
-
-
-	<acme:form-submit test="${command == 'create'}" code="worker.application.form-buttom.create"
-		action="/worker/application/create?jobId=${jobId}" />
+	
+	<jstl:if test="${ !listProblemEmpty }">
+		<acme:form-textarea code="worker.application.form.label.answer" path="answer" />
+		
+		<jstl:if test="${ !noHasPassword }">
+			<jstl:if test="${command != 'create' }">
+				<acme:form-password code="worker.application.form.label.code" path="code" />
+			</jstl:if>
+			<jstl:if test="${command == 'create' }">
+				<acme:form-textbox code="worker.application.form.label.code" path="code" />
+			</jstl:if>
+			<acme:form-password code="worker.application.form.label.password" path="password" />
+		</jstl:if>
+		
+		<jstl:if test="${ noHasPassword && hasCode}">
+			<acme:form-textbox code="worker.application.form.label.code" path="code" />
+		</jstl:if>
+	</jstl:if>
+		
+	
+	<acme:form-submit test="${command == 'create'}" code="worker.application.form-buttom.create" action="/worker/application/create"/>
 	<acme:form-return code="worker.application.form.button.return" />
+	
 </acme:form>
