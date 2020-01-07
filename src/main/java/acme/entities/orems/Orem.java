@@ -1,5 +1,5 @@
 
-package acme.entities.problems;
+package acme.entities.orems;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -18,7 +18,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Problem extends DomainEntity {
+public class Orem extends DomainEntity {
 
 	// Serialisation identifier -------------------------------------------------------------------
 
@@ -27,11 +27,11 @@ public class Problem extends DomainEntity {
 	// Attributes ----------------------------------------------------------------------------------
 
 	@NotBlank
-	@Length(max = 150)
+	@Length(max = 256)
 	private String				text;
 
 	@URL
-	private String				hint;
+	private String				marker;
 
 	// Relationships --------------------------------------------------------------------------------
 

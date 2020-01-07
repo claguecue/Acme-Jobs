@@ -7,31 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import acme.entities.problems.Problem;
+import acme.entities.orems.Orem;
 import acme.entities.roles.Employer;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 
 @Controller
-@RequestMapping("/employer/problem/")
-public class EmployerProblemController extends AbstractController<Employer, Problem> {
+@RequestMapping("/employer/orem/")
+public class EmployerOremController extends AbstractController<Employer, Orem> {
 
 	// Internal state ------------------------------------------------------------------
 
 	@Autowired
-	private EmployerProblemShowService		showService;
+	private EmployerOremShowService		showService;
 
 	@Autowired
-	private EmployerProblemListService		listService;
+	private EmployerOremListService		listService;
 
 	@Autowired
-	private EmployerProblemCreateService	createService;
+	private EmployerOremCreateService	createService;
 
 	@Autowired
-	private EmployerProblemUpdateService	updateService;
+	private EmployerOremUpdateService	updateService;
 
 	@Autowired
-	private EmployerProblemDeleteService	deleteService;
+	private EmployerOremDeleteService	deleteService;
 
 
 	// Constructors --------------------------------------------------------------------

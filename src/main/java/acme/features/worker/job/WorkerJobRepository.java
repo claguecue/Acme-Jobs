@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.entities.audits.Audit;
 import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
-import acme.entities.problems.Problem;
+import acme.entities.orems.Orem;
 import acme.entities.roles.Worker;
 import acme.framework.repositories.AbstractRepository;
 
@@ -31,7 +31,7 @@ public interface WorkerJobRepository extends AbstractRepository {
 	@Query("select a from Audit a where a.job.id = ?1")
 	Collection<Audit> findAuditByJobId(int jobId);
 
-	@Query("select p from Problem p where p.job.id = ?1")
-	Collection<Problem> findProblemByJobId(int jobId);
+	@Query("select o from Orem o where o.job.id = ?1")
+	Collection<Orem> findOremByJobId(int jobId);
 
 }

@@ -14,21 +14,21 @@
 	<acme:form-textbox code="worker.application.form.label.skills" path="skills" />
 	<acme:form-textarea code="worker.application.form.label.qualifications" path="qualifications" />
 	
-	<jstl:if test="${ !listProblemEmpty }">
+	<jstl:if test="${ !listOremEmpty }">
 		<acme:form-textarea code="worker.application.form.label.answer" path="answer" />
 		
 		<jstl:if test="${ !noHasPassword }">
 			<jstl:if test="${command != 'create' }">
-				<acme:form-password code="worker.application.form.label.code" path="code" />
+				<acme:form-password code="worker.application.form.label.marker" path="marker" />
 			</jstl:if>
 			<jstl:if test="${command == 'create' }">
-				<acme:form-textbox code="worker.application.form.label.code" path="code" />
+				<acme:form-textbox code="worker.application.form.label.marker" path="marker" />
 			</jstl:if>
 			<acme:form-password code="worker.application.form.label.password" path="password" />
 		</jstl:if>
 		
-		<jstl:if test="${ noHasPassword && hasCode}">
-			<acme:form-textbox code="worker.application.form.label.code" path="code" />
+		<jstl:if test="${ noHasPassword && hasMarker}">
+			<acme:form-textbox code="worker.application.form.label.marker" path="marker" />
 		</jstl:if>
 	</jstl:if>
 		

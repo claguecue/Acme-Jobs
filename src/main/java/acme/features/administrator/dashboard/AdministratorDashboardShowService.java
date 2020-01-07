@@ -80,18 +80,18 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		// Control check -------------------------------------------------------------------------------------------
 
-		Double ratioOfJobsHaveAProblem = this.repository.ratioOfJobsHaveAProblem();
-		Double ratioOfApplicationsIncludeAAnswer = this.repository.ratioOfApplicationsIncludeAAnswer();
-		Double ratioOfApplicationsIncludeACodeWithPassword = this.repository.ratioOfApplicationsIncludeACodeWithPassword();
+		Double ratioOfJobsHaveAOrem = this.repository.ratioOfJobsHaveAOrem();
+		Double ratioOfOremsIncludeAMarker = this.repository.ratioOfOremsIncludeAMarker();
+		Double ratioOfApplicationsIncludeAMarkerWithPassword = this.repository.ratioOfApplicationsIncludeAMarkerWithPassword();
 
-		entity.setRatioOfJobsHaveAProblem(ratioOfJobsHaveAProblem);
-		entity.setRatioOfApplicationsIncludeAAnswer(ratioOfApplicationsIncludeAAnswer);
-		entity.setRatioOfApplicationsIncludeACodeWithPassword(ratioOfApplicationsIncludeACodeWithPassword);
+		entity.setRatioOfJobsHaveAOrem(ratioOfJobsHaveAOrem);
+		entity.setRatioOfOremsIncludeAMarker(ratioOfOremsIncludeAMarker);
+		entity.setRatioOfApplicationsIncludeAMarkerWithPassword(ratioOfApplicationsIncludeAMarkerWithPassword);
 
 		request.unbind(entity, model, "numberOfAnnouncements", "numberOfCompanyRecords", "numberOfInvestorRecords", "minimumRewardActiveRequests", "maximumRewardActiveRequests", "averageRewardActiveRequests", "stddevRewardActiveRequests",
 			"minimumRewardActiveOffersMin", "maximumRewardActiveOffersMin", "averageRewardActiveOffersMin", "stddevRewardActiveOffersMin", "minimumRewardActiveOffersMax", "maximumRewardActiveOffersMax", "averageRewardActiveOffersMax",
-			"stddevRewardActiveOffersMax", "averageNumberofJobsPerEmployer", "averageNumberofApplicationsPerWorker", "averageNumberofApplicationsPerEmployer", "ratioOfJobsHaveAProblem", "ratioOfApplicationsIncludeAAnswer",
-			"ratioOfApplicationsIncludeACodeWithPassword");
+			"stddevRewardActiveOffersMax", "averageNumberofJobsPerEmployer", "averageNumberofApplicationsPerWorker", "averageNumberofApplicationsPerEmployer", "ratioOfJobsHaveAOrem", "ratioOfOremsIncludeAMarker",
+			"ratioOfApplicationsIncludeAMarkerWithPassword");
 	}
 
 	@Override

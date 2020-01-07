@@ -6,43 +6,43 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.problems.Problem;
+import acme.entities.orems.Orem;
 import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class EmployerProblemListService implements AbstractListService<Employer, Problem> {
+public class EmployerOremListService implements AbstractListService<Employer, Orem> {
 
 	// Internal state ---------------------------------------------------------------
 
 	@Autowired
-	EmployerProblemRepository repository;
+	EmployerOremRepository repository;
 
 
-	// AbstractListService<Employer, Problem> interface ---------------------------------
+	// AbstractListService<Employer, Orem> interface ---------------------------------
 
 	@Override
-	public boolean authorise(final Request<Problem> request) {
+	public boolean authorise(final Request<Orem> request) {
 		assert request != null;
 		return true;
 	}
 
 	@Override
-	public void unbind(final Request<Problem> request, final Problem entity, final Model model) {
+	public void unbind(final Request<Orem> request, final Orem entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "text", "hint", "job");
+		request.unbind(entity, model, "text", "marker", "job");
 	}
 
 	@Override
-	public Collection<Problem> findMany(final Request<Problem> request) {
+	public Collection<Orem> findMany(final Request<Orem> request) {
 		assert request != null;
 
-		Collection<Problem> result;
+		Collection<Orem> result;
 		int jobId;
 
 		String[] cadena = request.getServletRequest().getQueryString().trim().split("=");

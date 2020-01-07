@@ -18,13 +18,13 @@
 
 <tiles-definitions>
 
-	<definition name="employer/problem/list" extends="master">
-		<put-attribute name="body" type="template" value="../employer/problem/list.jsp"/>
+	<definition name="authenticated/orem/list" extends="master">
+		<put-attribute name="body" type="template" value="../authenticated/orem/list.jsp"/>
 	</definition>
 	
 	
-	<definition name="employer/problem/form" extends="master">
-		<put-attribute name="body" type="template" value="../employer/problem/form.jsp"/>
+	<definition name="authenticated/orem/form" extends="master">
+		<put-attribute name="body" type="template" value="../authenticated/orem/form.jsp"/>
 	</definition>
 	
 </tiles-definitions>

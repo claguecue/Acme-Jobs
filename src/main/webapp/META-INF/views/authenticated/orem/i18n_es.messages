@@ -1,4 +1,4 @@
-# i18n_en.messages
+# i18n_es.messages
 #
 # Copyright (c) 2019 Rafael Corchuelo.
 #
@@ -8,15 +8,14 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+authenticated.orem.form.label.text = Texto
+authenticated.orem.form.label.marker = Marcador
 
-employer.problem.form.label.text = Text
-employer.problem.form.label.hint = Hint
+authenticated.orem.list.label.text = Texto
+authenticated.orem.list.label.marker = Marcador
 
-employer.problem.list.label.text = Text
-employer.problem.list.label.hint = Hint 
+authenticated.orem.form.button.create = Crear
+authenticated.orem.form.button.update = Actualizar
+authenticated.orem.form.button.delete = Borrar
 
-employer.problem.form.button.create = Create
-employer.problem.form.button.update = Update
-employer.problem.form.button.delete = Delete
-
-employer.problem.form.button.return = Return
+authenticated.orem.form.button.return = Volver

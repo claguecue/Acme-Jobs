@@ -69,13 +69,13 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	// Control check ----------------------------------------------------------------------------------
 
-	@Query("select 1.0 * count(j)/(select count(j1) from Job j1 where j1.id in(select p.job.id from Problem p)) from Job j")
-	Double ratioOfJobsHaveAProblem();
+	@Query("select 1.0 * count(j)/(select count(j1) from Job j1) from Job j where j.id in(select o.job.id from Orem o)")
+	Double ratioOfJobsHaveAOrem();
 
-	@Query("select 1.0 * count(a)/(select count(a1) from Application a1 where a1.answer != null) from Application a")
-	Double ratioOfApplicationsIncludeAAnswer();
+	@Query("select 1.0 * count(o)/(select count(o1) from Orem o1 ) from Orem o where o.marker != null")
+	Double ratioOfOremsIncludeAMarker();
 
-	@Query("select 1.0 * count(a)/(select count(a1) from Application a1 where a1.password != null) from Application a")
-	Double ratioOfApplicationsIncludeACodeWithPassword();
+	@Query("select 1.0 * count(a)/(select count(a1) from Application a1) from Application a where a.password != null")
+	Double ratioOfApplicationsIncludeAMarkerWithPassword();
 
 }

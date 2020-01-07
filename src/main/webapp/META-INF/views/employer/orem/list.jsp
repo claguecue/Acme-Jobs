@@ -5,7 +5,7 @@
 
 
 <acme:list>
-	<acme:list-column code="employer.problem.list.label.text" path="text" width="50%"/>
-	<acme:list-column code="employer.problem.list.label.hint" path="hint" width="50%"/>
+	<acme:list-column code="employer.orem.list.label.text" path="text" width="50%"/>
+	<acme:list-column code="employer.orem.list.label.marker" path="marker" width="50%"/>
 		
 </acme:list>

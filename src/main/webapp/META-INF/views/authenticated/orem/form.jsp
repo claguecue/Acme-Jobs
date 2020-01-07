@@ -16,10 +16,10 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form>
-	<acme:form-textarea code="authenticated.problem.form.label.text" path="text"/>
-	<acme:form-url code="authenticated.problem.form.label.hint" path="hint"/>
+	<acme:form-textarea code="authenticated.orem.form.label.text" path="text"/>
+	<acme:form-url code="authenticated.orem.form.label.marker" path="marker"/>
 	
-	<acme:form-return code="authenticated.problem.form.button.return"/>
+	<acme:form-return code="authenticated.orem.form.button.return"/>
 </acme:form>
 
 

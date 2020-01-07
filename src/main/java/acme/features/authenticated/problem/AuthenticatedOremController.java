@@ -7,22 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import acme.entities.problems.Problem;
+import acme.entities.orems.Orem;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 import acme.framework.entities.Authenticated;
 
 @Controller
-@RequestMapping("/authenticated/problem/")
-public class AuthenticatedProblemController extends AbstractController<Authenticated, Problem> {
+@RequestMapping("/authenticated/orem/")
+public class AuthenticatedOremController extends AbstractController<Authenticated, Orem> {
 
 	// Internal state ------------------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedProblemShowService	showService;
+	private AuthenticatedOremShowService	showService;
 
 	@Autowired
-	private AuthenticatedProblemListService	listService;
+	private AuthenticatedOremListService	listService;
 
 
 	// Constructors --------------------------------------------------------------------

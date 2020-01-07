@@ -5,9 +5,9 @@
 
 <acme:form readonly="true">
 		
-	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfJobsHaveAProblem" path="ratioOfJobsHaveAProblem" />
-	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfApplicationsIncludeAAnswer" path="ratioOfApplicationsIncludeAAnswer" />
-	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfApplicationsIncludeACodeWithPassword" path="ratioOfApplicationsIncludeACodeWithPassword" />
+	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfJobsHaveAOrem" path="ratioOfJobsHaveAOrem" />
+	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfOremsIncludeAMarker" path="ratioOfOremsIncludeAMarker" />
+	<acme:form-textbox code="administrator.dashboard.form.label.ratioOfApplicationsIncludeAMarkerWithPassword" path="ratioOfApplicationsIncludeAMarkerWithPassword" />
 	
 	<acme:menu-separator/>
 

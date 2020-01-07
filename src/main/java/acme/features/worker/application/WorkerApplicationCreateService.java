@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.applications.Application;
 import acme.entities.applications.ApplicationStatus;
 import acme.entities.jobs.Job;
-import acme.entities.problems.Problem;
+import acme.entities.orems.Orem;
 import acme.entities.roles.Worker;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -50,11 +50,11 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert model != null;
 
-		Collection<Problem> problems = this.repository.findProblemsByJob(request.getModel().getInteger("id"));
+		Collection<Orem> orems = this.repository.findOremsByJob(request.getModel().getInteger("id"));
 
-		request.unbind(entity, model, "referenceNumber", "statement", "skills", "qualifications", "answer", "code", "password");
+		request.unbind(entity, model, "referenceNumber", "statement", "skills", "qualifications", "answer", "marker", "password");
 		model.setAttribute("id", request.getModel().getInteger("id"));
-		model.setAttribute("listProblemEmpty", problems.isEmpty());
+		model.setAttribute("listOremEmpty", orems.isEmpty());
 	}
 
 	@Override
@@ -69,8 +69,8 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		idJob = request.getModel().getInteger("id");
 		result = new Application();
 
-		Collection<Problem> problems = this.repository.findProblemsByJob(idJob);
-		Boolean hasProblem = !problems.isEmpty();
+		Collection<Orem> orems = this.repository.findOremsByJob(idJob);
+		Boolean hasOrems = !orems.isEmpty();
 
 		Date moment;
 		moment = new Date(System.currentTimeMillis() - 1);
@@ -78,9 +78,9 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		result.setStatus(ApplicationStatus.PENDING);
 		result.setWorker(this.repository.findOneWorkerById(accountId));
 		result.setJob(this.repository.findOneJobById(idJob));
-		if (!hasProblem) {
+		if (!hasOrems) {
 			result.setAnswer(null);
-			result.setCode(null);
+			result.setMarker(null);
 			result.setPassword(null);
 		}
 
@@ -99,7 +99,7 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 			errors.state(request, !unique, "referenceNumber", "worker.application.error.duplicatedReference");
 		}
 
-		Collection<Problem> problems = this.repository.findProblemsByJob(entity.getJob().getId());
+		Collection<Orem> problems = this.repository.findOremsByJob(entity.getJob().getId());
 		if (!problems.isEmpty()) {
 			if (!errors.hasErrors("answer")) {
 				Boolean hasAnswer = null;
@@ -108,15 +108,15 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 			}
 
 			if (!errors.hasErrors("password")) {
-				Boolean hasCodePassword, hasCode, hasPassword = null;
-				hasCode = !request.getModel().getString("code").isEmpty();
+				Boolean hasMarkerPassword, hasMarker, hasPassword = null;
+				hasMarker = !request.getModel().getString("marker").isEmpty();
 				hasPassword = !request.getModel().getString("password").isEmpty();
-				if (!hasCode && hasPassword) {
-					hasCodePassword = false;
+				if (!hasMarker && hasPassword) {
+					hasMarkerPassword = false;
 				} else {
-					hasCodePassword = true;
+					hasMarkerPassword = true;
 				}
-				errors.state(request, hasCodePassword, "password", "worker.application.error.password");
+				errors.state(request, hasMarkerPassword, "password", "worker.application.error.password");
 			}
 		}
 

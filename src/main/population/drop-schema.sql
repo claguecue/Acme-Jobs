@@ -63,9 +63,9 @@
        drop 
        foreign key `FKpcpr0xb5k7s4rxv5pulstt5v9`;
 
-    alter table `problem` 
+    alter table `orem` 
        drop 
-       foreign key `FK61q7yf0k3b5ra7na9n9f666qf`;
+       foreign key `FK5lh1628w0y3y5of8nvggwxvpo`;
 
     alter table `provider` 
        drop 
@@ -123,7 +123,7 @@
 
     drop table if exists `offer`;
 
-    drop table if exists `problem`;
+    drop table if exists `orem`;
 
     drop table if exists `provider`;
 

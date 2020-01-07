@@ -4,33 +4,33 @@ package acme.features.employer.problem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.problems.Problem;
+import acme.entities.orems.Orem;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.services.AbstractDeleteService;
+import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class EmployerProblemDeleteService implements AbstractDeleteService<Employer, Problem> {
+public class EmployerOremUpdateService implements AbstractUpdateService<Employer, Orem> {
 
 	// Internal state --------------------------------------------------------------------------
 
 	@Autowired
-	EmployerProblemRepository repository;
+	EmployerOremRepository repository;
 
 
-	// AbstractDeleteService<Employer, Problem> interface ---------------------------------------
+	// AbstractUpdateService<Employer, Orem> interface ---------------------------------------
 
 	@Override
-	public boolean authorise(final Request<Problem> request) {
+	public boolean authorise(final Request<Orem> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void bind(final Request<Problem> request, final Problem entity, final Errors errors) {
+	public void bind(final Request<Orem> request, final Orem entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -39,40 +39,40 @@ public class EmployerProblemDeleteService implements AbstractDeleteService<Emplo
 	}
 
 	@Override
-	public void unbind(final Request<Problem> request, final Problem entity, final Model model) {
+	public void unbind(final Request<Orem> request, final Orem entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "text", "hint");
+		request.unbind(entity, model, "text", "marker");
 	}
 
 	@Override
-	public Problem findOne(final Request<Problem> request) {
+	public Orem findOne(final Request<Orem> request) {
 		assert request != null;
 
-		Problem result;
+		Orem result;
 		int id;
 
 		id = request.getModel().getInteger("id");
-		result = this.repository.findOneProblemById(id);
+		result = this.repository.findOneOremById(id);
 
 		return result;
 	}
 
 	@Override
-	public void validate(final Request<Problem> request, final Problem entity, final Errors errors) {
+	public void validate(final Request<Orem> request, final Orem entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
 	}
 
 	@Override
-	public void delete(final Request<Problem> request, final Problem entity) {
+	public void update(final Request<Orem> request, final Orem entity) {
 		assert request != null;
 		assert entity != null;
 
-		this.repository.delete(entity);
+		this.repository.save(entity);
 	}
 
 }

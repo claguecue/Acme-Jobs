@@ -1,7 +1,7 @@
 
-administrator.dashboard.form.label.ratioOfJobsHaveAProblem = Ratio of jobs that have a problem:
-administrator.dashboard.form.label.ratioOfApplicationsIncludeAAnswer = Ratio of applications that include a answer:
-administrator.dashboard.form.label.ratioOfApplicationsIncludeACodeWithPassword = Ratio of applications that include a password-protected code: 
+administrator.dashboard.form.label.ratioOfJobsHaveAOrem = Ratio of jobs that have a orem:
+administrator.dashboard.form.label.ratioOfOremsIncludeAMarker = Ratio of orems that include a marker:
+administrator.dashboard.form.label.ratioOfApplicationsIncludeAMarkerWithPassword = Ratio of applications that include a password-protected marker: 
 
 
 administrator.dashboard.form.label.numberOfAnnouncements = Number of Announcements:

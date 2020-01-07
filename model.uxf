@@ -511,8 +511,8 @@ Announcement
     <coordinates>
       <x>826</x>
       <y>497</y>
-      <w>273</w>
-      <h>168</h>
+      <w>329</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Application
@@ -525,8 +525,8 @@ Application
 + skills: String{NotBlank}
 + quialifications: String{NotBlank}
 - answer: String
-- code: String
-- password: String</panel_attributes>
+- marker: String
+- password: String{Pattern(^(?=.*[A-Za-z]){1,}(?=.*[0-9]){1,}(?=.*[\\W]){1,}[A-Za-z0-9\\W]{10,}$|^$)}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -869,10 +869,10 @@ m2=1
       <h>77</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Problem
+Orem
 --
 + text: String{NotBlank, length(max=150)}
-- hint:String{URL}</panel_attributes>
+- marker:String{URL}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

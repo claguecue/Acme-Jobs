@@ -14,9 +14,9 @@ public class Dashboard implements Serializable {
 
 	// Control check
 
-	Double						ratioOfJobsHaveAProblem;
-	Double						ratioOfApplicationsIncludeAAnswer;
-	Double						ratioOfApplicationsIncludeACodeWithPassword;
+	Double						ratioOfJobsHaveAOrem;
+	Double						ratioOfOremsIncludeAMarker;
+	Double						ratioOfApplicationsIncludeAMarkerWithPassword;
 
 	// -------------------------------------------------------------------------
 

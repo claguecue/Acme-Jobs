@@ -59,10 +59,9 @@ public class Application extends DomainEntity {
 
 	private String				answer;
 
-	private String				code;
+	private String				marker;
 
-	@Pattern(regexp = "^(?=.*[A-Za-z]){3,}(?=.*[0-9]){2,}(?=.*[\\W]){1,}[A-Za-z0-9\\W]{6,}$|^$")
-	//@Length(min = 6)
+	@Pattern(regexp = "^(?=.*[A-Za-z]){1,}(?=.*[0-9]){1,}(?=.*[\\W]){1,}[A-Za-z0-9\\W]{10,}$|^$")
 	private String				password;
 
 	// Relationships

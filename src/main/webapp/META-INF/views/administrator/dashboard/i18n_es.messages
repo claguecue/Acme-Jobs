@@ -1,7 +1,7 @@
 
-administrator.dashboard.form.label.ratioOfJobsHaveAProblem = Proporción de trabajos que tienen un problema:
-administrator.dashboard.form.label.ratioOfApplicationsIncludeAAnswer = Proporción de aplicaciones que incluyen una respuesta:
-administrator.dashboard.form.label.ratioOfApplicationsIncludeACodeWithPassword = Proporción de aplicaciones que incluyen un código protegido por contraseña:
+administrator.dashboard.form.label.ratioOfJobsHaveAOrem = Proporción de trabajos que tienen un orem:
+administrator.dashboard.form.label.ratioOfOremsIncludeAMarker = Proporción de orems que incluyen un marcador:
+administrator.dashboard.form.label.ratioOfApplicationsIncludeAMarkerWithPassword = Proporción de aplicaciones que incluyen un marcador protegido por contraseña:
 
 
 
