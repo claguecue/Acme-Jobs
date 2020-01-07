@@ -1,10 +1,13 @@
 
 package acme.features.worker.application;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.applications.Application;
+import acme.entities.problems.Problem;
 import acme.entities.roles.Worker;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -21,20 +24,6 @@ public class WorkerApplicationShowService implements AbstractShowService<Worker,
 	public boolean authorise(final Request<Application> request) {
 		assert request != null;
 
-		//		boolean result;
-		//		int applicationId;
-		//		Application application;
-		//		Worker worker;
-		//		Principal principal;
-		//
-		//		applicationId = request.getModel().getInteger("id");
-		//		application = this.repository.findOneApplicationById(applicationId);
-		//		worker = application.getWorker();
-		//		principal = request.getPrincipal();
-		//		result = worker.getUserAccount().getId() == principal.getAccountId();
-
-		//	return result;
-
 		return true;
 	}
 
@@ -44,8 +33,25 @@ public class WorkerApplicationShowService implements AbstractShowService<Worker,
 		assert entity != null;
 		assert model != null;
 
+		Collection<Problem> problems = this.repository.findProblemsByJob(entity.getJob().getId());
+
+		Boolean hasPassword = true;
+		String password = this.repository.findPasswordOfApp(request.getModel().getInteger("id"));
+		if (password == null || password.isEmpty()) {
+			hasPassword = false;
+		}
+
+		Boolean hasCode = true;
+		String code = this.repository.findCodeOfApp(request.getModel().getInteger("id"));
+		if (code == null || code.isEmpty()) {
+			hasCode = false;
+		}
+
 		request.unbind(entity, model, "referenceNumber", "creationMoment", "status");
-		request.unbind(entity, model, "statement", "skills", "qualifications", "job.reference", "worker.userAccount.username", "employer.userAccount.username");
+		request.unbind(entity, model, "statement", "skills", "qualifications", "answer", "code", "password", "job.reference", "worker.userAccount.username", "employer.userAccount.username");
+		model.setAttribute("listProblemEmpty", problems.isEmpty());
+		model.setAttribute("noHasPassword", !hasPassword);
+		model.setAttribute("hasCode", hasCode);
 	}
 
 	@Override

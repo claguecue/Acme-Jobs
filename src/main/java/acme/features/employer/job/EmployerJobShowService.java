@@ -10,6 +10,7 @@ import acme.entities.applications.Application;
 import acme.entities.audits.Audit;
 import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
+import acme.entities.problems.Problem;
 import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -56,11 +57,13 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		Collection<Duty> duties = this.repository.findDutyByJobId(entity.getId());
 		Collection<Audit> audits = this.repository.findAuditByJobId(entity.getId());
 		Collection<Application> apps = this.repository.findApplicationByJobId(entity.getId());
+		Collection<Problem> problems = this.repository.findProblemByJobId(entity.getId());
 
 		request.unbind(entity, model, "id", "reference", "deadline", "title", "salary", "moreInfo", "description", "finalMode");
 		model.setAttribute("listDutyEmpty", duties.isEmpty());
 		model.setAttribute("listAuditEmpty", audits.isEmpty());
 		model.setAttribute("listAppEmpty", apps.isEmpty());
+		model.setAttribute("listProblemEmpty", problems.isEmpty());
 	}
 
 	@Override

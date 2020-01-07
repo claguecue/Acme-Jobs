@@ -1,0 +1,21 @@
+# i18n_es.messages
+#
+# Copyright (c) 2019 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+employer.problem.form.label.text = Texto
+employer.problem.form.label.hint = Pista
+
+employer.problem.list.label.text = Texto
+employer.problem.list.label.hint = Pista
+
+employer.problem.form.button.create = Crear
+employer.problem.form.button.update = Actualizar
+employer.problem.form.button.delete = Borrar
+
+employer.problem.form.button.return = Volver

@@ -48,6 +48,9 @@
 	
 
 	<acme:form-hidden path="id"/>
+	
+	<acme:form-submit test="${command != 'create' && listProblemEmpty}" code="employer.job.form.label.problems.create" action="/employer/problem/create?id=${id}" method="get"/>
+	<acme:form-submit test="${command != 'create' && !listProblemEmpty}" code="employer.job.form.label.problem.show" action="/employer/problem/list?id=${id}" method="get"/>
 
 	<acme:form-submit test="${command != 'create' && !listDutyEmpty}" code="employer.job.form.label.duties" action="/employer/duty/list?id=${id}" method="get"/>
 	<acme:form-submit test="${command != 'create' }" code="employer.job.form.label.duties.create" action="/employer/duty/create?id=${id}" method="get"/>

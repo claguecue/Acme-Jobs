@@ -12,6 +12,14 @@ public class Dashboard implements Serializable {
 
 	private static final long	serialVersionUID	= 1L;
 
+	// Control check
+
+	Double						ratioOfJobsHaveAProblem;
+	Double						ratioOfApplicationsIncludeAAnswer;
+	Double						ratioOfApplicationsIncludeACodeWithPassword;
+
+	// -------------------------------------------------------------------------
+
 	Integer						numberOfAnnouncements;
 	Integer						numberOfCompanyRecords;
 	Integer						numberOfInvestorRecords;

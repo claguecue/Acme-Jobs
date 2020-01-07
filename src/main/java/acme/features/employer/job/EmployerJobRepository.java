@@ -11,6 +11,7 @@ import acme.entities.audits.Audit;
 import acme.entities.customizations.Customization;
 import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
+import acme.entities.problems.Problem;
 import acme.entities.roles.Employer;
 import acme.framework.repositories.AbstractRepository;
 
@@ -31,6 +32,9 @@ public interface EmployerJobRepository extends AbstractRepository {
 
 	@Query("select d from Duty d where d.job.id = ?1")
 	Collection<Duty> findDutyByJobId(int jobId);
+
+	@Query("select p from Problem p where p.job.id = ?1")
+	Collection<Problem> findProblemByJobId(int jobId);
 
 	@Query("select c from Customization c")
 	Customization findCustomization();

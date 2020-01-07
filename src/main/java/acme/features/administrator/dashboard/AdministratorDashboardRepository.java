@@ -67,4 +67,15 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select avg(select count(a) from Application a where a.job.employer.id = e.id) from Employer e")
 	Double averageNumberofApplicationsPerEmployer();
 
+	// Control check ----------------------------------------------------------------------------------
+
+	@Query("select 1.0 * count(j)/(select count(j1) from Job j1 where j1.id in(select p.job.id from Problem p)) from Job j")
+	Double ratioOfJobsHaveAProblem();
+
+	@Query("select 1.0 * count(a)/(select count(a1) from Application a1 where a1.answer != null) from Application a")
+	Double ratioOfApplicationsIncludeAAnswer();
+
+	@Query("select 1.0 * count(a)/(select count(a1) from Application a1 where a1.password != null) from Application a")
+	Double ratioOfApplicationsIncludeACodeWithPassword();
+
 }

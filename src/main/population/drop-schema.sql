@@ -63,6 +63,10 @@
        drop 
        foreign key `FKpcpr0xb5k7s4rxv5pulstt5v9`;
 
+    alter table `problem` 
+       drop 
+       foreign key `FK61q7yf0k3b5ra7na9n9f666qf`;
+
     alter table `provider` 
        drop 
        foreign key FK_b1gwnjqm6ggy9yuiqm0o4rlmd;
@@ -118,6 +122,8 @@
     drop table if exists `non_commercial_banner`;
 
     drop table if exists `offer`;
+
+    drop table if exists `problem`;
 
     drop table if exists `provider`;
 

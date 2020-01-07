@@ -1,3 +1,10 @@
+
+administrator.dashboard.form.label.ratioOfJobsHaveAProblem = Proporción de trabajos que tienen un problema:
+administrator.dashboard.form.label.ratioOfApplicationsIncludeAAnswer = Proporción de aplicaciones que incluyen una respuesta:
+administrator.dashboard.form.label.ratioOfApplicationsIncludeACodeWithPassword = Proporción de aplicaciones que incluyen un código protegido por contraseña:
+
+
+
 administrator.dashboard.form.label.numberOfAnnouncements = Número de Anuncios:
 administrator.dashboard.form.label.numberOfCompanyRecords = Número de Compañias:
 administrator.dashboard.form.label.numberOfInvestorRecords = Número de Inversores:

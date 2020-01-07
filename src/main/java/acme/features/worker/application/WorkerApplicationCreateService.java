@@ -1,6 +1,7 @@
 
 package acme.features.worker.application;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.applications.Application;
 import acme.entities.applications.ApplicationStatus;
 import acme.entities.jobs.Job;
+import acme.entities.problems.Problem;
 import acme.entities.roles.Worker;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -48,8 +50,11 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "referenceNumber", "statement", "skills", "qualifications");
+		Collection<Problem> problems = this.repository.findProblemsByJob(request.getModel().getInteger("id"));
+
+		request.unbind(entity, model, "referenceNumber", "statement", "skills", "qualifications", "answer", "code", "password");
 		model.setAttribute("id", request.getModel().getInteger("id"));
+		model.setAttribute("listProblemEmpty", problems.isEmpty());
 	}
 
 	@Override
@@ -64,12 +69,20 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		idJob = request.getModel().getInteger("id");
 		result = new Application();
 
+		Collection<Problem> problems = this.repository.findProblemsByJob(idJob);
+		Boolean hasProblem = !problems.isEmpty();
+
 		Date moment;
 		moment = new Date(System.currentTimeMillis() - 1);
 		result.setCreationMoment(moment);
 		result.setStatus(ApplicationStatus.PENDING);
 		result.setWorker(this.repository.findOneWorkerById(accountId));
 		result.setJob(this.repository.findOneJobById(idJob));
+		if (!hasProblem) {
+			result.setAnswer(null);
+			result.setCode(null);
+			result.setPassword(null);
+		}
 
 		return result;
 	}
@@ -80,10 +93,32 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert errors != null;
 
-		Boolean unique = null;
-		unique = this.repository.findApplicationByReferenceNumber(entity.getReferenceNumber()) != null;
+		if (!errors.hasErrors("referenceNumber")) {
+			Boolean unique = null;
+			unique = this.repository.findApplicationByReferenceNumber(entity.getReferenceNumber()) != null;
+			errors.state(request, !unique, "referenceNumber", "worker.application.error.duplicatedReference");
+		}
 
-		errors.state(request, !unique, "referenceNumber", "worker.application.error.duplicatedReference");
+		Collection<Problem> problems = this.repository.findProblemsByJob(entity.getJob().getId());
+		if (!problems.isEmpty()) {
+			if (!errors.hasErrors("answer")) {
+				Boolean hasAnswer = null;
+				hasAnswer = !request.getModel().getString("answer").isEmpty();
+				errors.state(request, hasAnswer, "answer", "worker.application.error.answer");
+			}
+
+			if (!errors.hasErrors("password")) {
+				Boolean hasCodePassword, hasCode, hasPassword = null;
+				hasCode = !request.getModel().getString("code").isEmpty();
+				hasPassword = !request.getModel().getString("password").isEmpty();
+				if (!hasCode && hasPassword) {
+					hasCodePassword = false;
+				} else {
+					hasCodePassword = true;
+				}
+				errors.state(request, hasCodePassword, "password", "worker.application.error.password");
+			}
+		}
 
 	}
 
