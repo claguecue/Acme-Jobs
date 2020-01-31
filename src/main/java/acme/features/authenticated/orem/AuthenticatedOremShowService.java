@@ -1,25 +1,25 @@
 
-package acme.features.employer.problem;
+package acme.features.authenticated.orem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.orems.Orem;
-import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class EmployerOremShowService implements AbstractShowService<Employer, Orem> {
+public class AuthenticatedOremShowService implements AbstractShowService<Authenticated, Orem> {
 
 	// Internal state -------------------------------------------------------------
 
 	@Autowired
-	EmployerOremRepository repository;
+	AuthenticatedOremRepository repository;
 
 
-	// AbstractShowService<Employer, Orem> interface -------------------------------
+	// AbstractShowService<Authenticated, Orem> interface -------------------------------
 
 	@Override
 	public boolean authorise(final Request<Orem> request) {

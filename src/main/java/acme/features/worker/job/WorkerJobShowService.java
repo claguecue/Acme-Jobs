@@ -42,11 +42,13 @@ public class WorkerJobShowService implements AbstractShowService<Worker, Job> {
 		Collection<Duty> duties = this.repository.findDutyByJobId(entity.getId());
 		Collection<Audit> audits = this.repository.findAuditByJobId(entity.getId());
 		Collection<Orem> orems = this.repository.findOremByJobId(entity.getId());
+		Integer idOremOfThisJob = this.repository.idOremOfTheJob(entity.getId());
 
 		request.unbind(entity, model, "id", "reference", "deadline", "title", "salary", "moreInfo", "description", "finalMode");
 		model.setAttribute("listDutyEmpty", duties.isEmpty());
 		model.setAttribute("listAuditEmpty", audits.isEmpty());
 		model.setAttribute("listOremEmpty", orems.isEmpty());
+		model.setAttribute("idOrem", idOremOfThisJob);
 	}
 
 	@Override

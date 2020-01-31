@@ -4,7 +4,8 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form>
-
+	<acme:form-hidden path="listOremEmpty"/>
+	
 	<acme:form-textbox code="worker.application.form.label.referenceNumber" path="referenceNumber" />
 	<jstl:if test="${command != 'create' }">
 		<acme:form-textbox code="worker.application.form.label.creationMoment" path="creationMoment" />
@@ -31,9 +32,8 @@
 			<acme:form-textbox code="worker.application.form.label.marker" path="marker" />
 		</jstl:if>
 	</jstl:if>
-		
 	
-	<acme:form-submit test="${command == 'create'}" code="worker.application.form-buttom.create" action="/worker/application/create"/>
+	<acme:form-submit test="${command == 'create'}" code="worker.application.form-buttom.create" action="/worker/application/create?id=${id}"/>
 	<acme:form-return code="worker.application.form.button.return" />
 	
 </acme:form>

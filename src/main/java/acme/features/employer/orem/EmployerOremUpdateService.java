@@ -1,19 +1,18 @@
 
-package acme.features.employer.problem;
+package acme.features.employer.orem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.jobs.Job;
 import acme.entities.orems.Orem;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class EmployerOremCreateService implements AbstractCreateService<Employer, Orem> {
+public class EmployerOremUpdateService implements AbstractUpdateService<Employer, Orem> {
 
 	// Internal state --------------------------------------------------------------------------
 
@@ -21,7 +20,7 @@ public class EmployerOremCreateService implements AbstractCreateService<Employer
 	EmployerOremRepository repository;
 
 
-	// AbstractCreateService<Employer, Orem> interface ---------------------------------------
+	// AbstractUpdateService<Employer, Orem> interface ---------------------------------------
 
 	@Override
 	public boolean authorise(final Request<Orem> request) {
@@ -36,7 +35,7 @@ public class EmployerOremCreateService implements AbstractCreateService<Employer
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors);
+		request.bind(entity, errors, "job");
 	}
 
 	@Override
@@ -46,22 +45,17 @@ public class EmployerOremCreateService implements AbstractCreateService<Employer
 		assert model != null;
 
 		request.unbind(entity, model, "text", "marker");
-		model.setAttribute("id", entity.getJob().getId());
 	}
 
 	@Override
-	public Orem instantiate(final Request<Orem> request) {
+	public Orem findOne(final Request<Orem> request) {
+		assert request != null;
+
 		Orem result;
-		Job job;
-		int idJob;
+		int id;
 
-		result = new Orem();
-		idJob = request.getModel().getInteger("id");
-		job = this.repository.findJobForThisOrem(idJob);
-
-		if (job != null) {
-			result.setJob(job);
-		}
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneOremById(id);
 
 		return result;
 	}
@@ -74,7 +68,10 @@ public class EmployerOremCreateService implements AbstractCreateService<Employer
 	}
 
 	@Override
-	public void create(final Request<Orem> request, final Orem entity) {
+	public void update(final Request<Orem> request, final Orem entity) {
+		assert request != null;
+		assert entity != null;
+
 		this.repository.save(entity);
 	}
 

@@ -34,6 +34,9 @@ public interface WorkerApplicationRepository extends AbstractRepository {
 	Application findApplicationByReferenceNumber(String reference);
 
 	@Query("select o from Orem o where o.job.id = ?1")
+	Orem findOremsByJob1(int jobId);
+
+	@Query("select o from Orem o where o.job.id = ?1")
 	Collection<Orem> findOremsByJob(int jobId);
 
 	@Query("select a.password from Application a where a.id = ?1")
@@ -41,4 +44,7 @@ public interface WorkerApplicationRepository extends AbstractRepository {
 
 	@Query("select a.marker from Application a where a.id = ?1")
 	String findMarkerOfApp(int appId);
+
+	@Query("select o.id from Orem o where o.job.id = ?1")
+	int findOremId(int jobId);
 }

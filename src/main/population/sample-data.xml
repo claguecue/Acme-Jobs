@@ -386,7 +386,7 @@
   		<property name="rejectJustification"><null/></property>
   		<property name="answer" value="This is the answer to the application1 in job1" />
   		<property name="marker" value="ABCD-1234" />
-  		<property name="password" value="pass.12" />
+  		<property name="password" value="pass.12aaaa" />
   		<property name="worker" ref="worker1Worker" />
   		<property name="job" ref="job1" />
   	</bean>
@@ -416,7 +416,7 @@
   		<property name="rejectJustification"><null/></property>
   		<property name="answer" value="This is the answer to the application3 in job3" />
   		<property name="marker" value="EFGH-5678" />
-  		<property name="password" value="pass.99" />
+  		<property name="password" value="pass.99aaaa" />
   		<property name="worker" ref="worker1Worker" />
   		<property name="job" ref="job3" />
   	</bean>
@@ -446,7 +446,7 @@
 		<property name="rejectJustification"><null/></property>
 		<property name="answer" value="This is the answer to the application5 in job1" />
   		<property name="marker" value="1234-ABCD" />
-  		<property name="password" value="pass.55" />
+  		<property name="password" value="pass.55aaaa" />
 		<property name="worker" ref="worker2Worker" />
 		<property name="job" ref="job1" />
 	</bean>
