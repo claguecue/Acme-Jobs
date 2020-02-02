@@ -11,6 +11,7 @@ import acme.entities.orems.Orem;
 import acme.entities.roles.Worker;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -24,7 +25,20 @@ public class WorkerApplicationShowService implements AbstractShowService<Worker,
 	public boolean authorise(final Request<Application> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int appId;
+		Application application;
+		Worker worker;
+		Principal principal;
+
+		appId = request.getModel().getInteger("id");
+		application = this.repository.findOneApplicationById(appId);
+		worker = application.getWorker();
+		principal = request.getPrincipal();
+
+		result = worker.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override

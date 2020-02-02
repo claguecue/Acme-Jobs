@@ -34,4 +34,7 @@ public interface WorkerJobRepository extends AbstractRepository {
 	@Query("select o from Orem o where o.job.id = ?1")
 	Collection<Orem> findOremByJobId(int jobId);
 
+	@Query("select o.id from Orem o where o.job.id = ?1")
+	Integer idOremOfTheJob(int jobId);
+
 }

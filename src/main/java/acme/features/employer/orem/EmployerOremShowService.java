@@ -1,31 +1,48 @@
 
-package acme.features.authenticated.problem;
+package acme.features.employer.orem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.jobs.Job;
 import acme.entities.orems.Orem;
+import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Authenticated;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AuthenticatedOremShowService implements AbstractShowService<Authenticated, Orem> {
+public class EmployerOremShowService implements AbstractShowService<Employer, Orem> {
 
 	// Internal state -------------------------------------------------------------
 
 	@Autowired
-	AuthenticatedOremRepository repository;
+	EmployerOremRepository repository;
 
 
-	// AbstractShowService<Authenticated, Orem> interface -------------------------------
+	// AbstractShowService<Employer, Orem> interface -------------------------------
 
 	@Override
 	public boolean authorise(final Request<Orem> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int oremId;
+		Orem orem;
+		Job job;
+		Employer employer;
+		Principal principal;
+
+		oremId = request.getModel().getInteger("id");
+		orem = this.repository.findOneOremById(oremId);
+		job = orem.getJob();
+		employer = job.getEmployer();
+		principal = request.getPrincipal();
+
+		result = employer.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override

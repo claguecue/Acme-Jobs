@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.problem;
+package acme.features.authenticated.orem;
 
 import javax.annotation.PostConstruct;
 
@@ -19,17 +19,13 @@ public class AuthenticatedOremController extends AbstractController<Authenticate
 	// Internal state ------------------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedOremShowService	showService;
-
-	@Autowired
-	private AuthenticatedOremListService	listService;
+	private AuthenticatedOremShowService showService;
 
 
 	// Constructors --------------------------------------------------------------------
 
 	@PostConstruct
 	private void initialisate() {
-		super.addBasicCommand(BasicCommand.LIST, this.listService);
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 
 	}

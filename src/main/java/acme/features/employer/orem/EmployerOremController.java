@@ -1,5 +1,5 @@
 
-package acme.features.employer.problem;
+package acme.features.employer.orem;
 
 import javax.annotation.PostConstruct;
 
@@ -22,9 +22,6 @@ public class EmployerOremController extends AbstractController<Employer, Orem> {
 	private EmployerOremShowService		showService;
 
 	@Autowired
-	private EmployerOremListService		listService;
-
-	@Autowired
 	private EmployerOremCreateService	createService;
 
 	@Autowired
@@ -38,7 +35,6 @@ public class EmployerOremController extends AbstractController<Employer, Orem> {
 
 	@PostConstruct
 	private void initialisate() {
-		super.addBasicCommand(BasicCommand.LIST, this.listService);
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 		super.addBasicCommand(BasicCommand.CREATE, this.createService);
 		super.addBasicCommand(BasicCommand.UPDATE, this.updateService);

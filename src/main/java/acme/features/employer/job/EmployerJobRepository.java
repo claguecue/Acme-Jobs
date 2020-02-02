@@ -45,4 +45,7 @@ public interface EmployerJobRepository extends AbstractRepository {
 	@Query("select a from Audit a where a.job.id = ?1")
 	Collection<Audit> findAuditByJobId(int jobId);
 
+	@Query("select o.id from Orem o where o.job.id = ?1")
+	Integer idOremOfTheJob(int jobId);
+
 }

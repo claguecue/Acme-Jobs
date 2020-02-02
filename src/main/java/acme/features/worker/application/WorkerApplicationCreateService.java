@@ -50,7 +50,7 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert model != null;
 
-		Collection<Orem> orems = this.repository.findOremsByJob(request.getModel().getInteger("id"));
+		Collection<Orem> orems = this.repository.findOremsByJob(entity.getJob().getId());
 
 		request.unbind(entity, model, "referenceNumber", "statement", "skills", "qualifications", "answer", "marker", "password");
 		model.setAttribute("id", request.getModel().getInteger("id"));
@@ -117,6 +117,20 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 					hasMarkerPassword = true;
 				}
 				errors.state(request, hasMarkerPassword, "password", "worker.application.error.password");
+
+				Boolean regexPassword = null;
+				String password = request.getModel().getString("password");
+				String regexx = "^(?=.*[A-Za-z]){1,}(?=.*[0-9]){1,}(?=.*[\\W]){1,}[A-Za-z0-9\\W]{10,}$|^$";
+				if (password.matches(regexx)) {
+					regexPassword = true;
+				} else {
+					regexPassword = false;
+				}
+				errors.state(request, regexPassword, "password", "worker.application.error.password.regex");
+			}
+
+			if (!errors.hasErrors("password")) {
+
 			}
 		}
 

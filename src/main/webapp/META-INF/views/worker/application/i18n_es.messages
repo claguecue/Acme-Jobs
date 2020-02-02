@@ -24,5 +24,5 @@ worker.application.form-buttom.create = Crear
 
 worker.application.error.duplicatedReference = El número de referencia debe ser único
 worker.application.error.answer = No puede estar en blanco
-worker.application.error.password = No se puede introducir una costraseña sin código
-worker.application.error.password.regex = La contraseña debe incluir 3 letras, 2 dígitos y 1 signo de puntuación
+worker.application.error.password = No se puede introducir una costraseña sin marker
+worker.application.error.password.regex = La contraseña debe incluir 1 letra, 1 dígito y 1 signo de puntuación - Mínimo 10 caracteres

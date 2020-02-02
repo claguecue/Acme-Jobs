@@ -23,5 +23,5 @@ worker.application.form-buttom.create = Create
 
 worker.application.error.duplicatedReference = Reference number must be unique
 worker.application.error.answer = Must not be blank
-worker.application.error.password = Can't introduce a password without a code
-worker.application.error.password.regex = The password must be include 3 letters, 2 digits, and 1 punctuation symbols
+worker.application.error.password = Can't introduce a password without a marker
+worker.application.error.password.regex = The password must be include 1 letter, 1 digit and 1 punctuation symbols - Minimum 10 characteres
